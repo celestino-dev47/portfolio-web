@@ -1,0 +1,283 @@
+/* =========================
+   RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =======================
+   Importação de fontes 
+======================== */
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('./Poppins-Regular.ttf');
+}
+
+/* =========================
+   BASE (MOBILE FIRST)
+========================= */
+body {
+  background: linear-gradient(90deg, #0f172a, #0f2a2f);
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  animation: showDown 2s ease forwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  letter-spacing: 2px;
+  font-family: 'Poppins', Arial;
+  line-height: 1.6;
+}
+
+header h1 {
+  font-size: 24px;
+  color: #22c55e;
+  letter-spacing: 2px;
+  font-weight: 900;
+}
+
+header p {
+  font-size: 16px;
+}
+
+.container {
+  font-size: 24px;
+}
+
+.palavras {
+  overflow: hidden;
+  height: 30px;
+  position: relative;
+}
+
+.palavras h1 {
+  display: block;
+  height: 30px;
+  animation: subir 10s infinite ease-in-out;
+  color: #3b82f6;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  border-bottom: 2px dotted #1e293b;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #0f2749;
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 0px 20px rgba(0, 250, 190, 0.3);
+  font-family: 'Times New Roman', Georgia;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  transition: 0.1s ease;
+}
+
+nav a:hover {
+  color: #a855f7;
+}
+
+nav a.active {
+  color: #22c55e;
+  border-bottom: 2px solid #22c55e;
+}
+
+main {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: showup 2s ease forwards;
+  letter-spacing: 0.4px;
+  line-height: 1.6;
+  font-family: 'Poppins';
+}
+/* Controle das secções */
+.section {
+  display: none;
+  opacity: 0;
+}
+
+.active-section {
+  display: block;
+  opacity: 0;
+  animation: showup 1s ease forwards;
+}
+
+.active-section h3 {
+  color: #38bdf8;
+  text-align: center;
+  font-weight: 800;
+}
+section {
+  background-color: #0f173a;
+  padding: 1.2rem;
+  border-radius: 18px;
+  box-shadow: 0 5px 20px rgba(200, 225, 255, 0.4);
+  backdrop-filter: blur(8px);
+  text-align: justify;
+}
+
+section h2 {
+  text-align: center;
+  color: #22c55e;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.habilidade {
+  margin-top: 1rem;
+  margin: 0.6rem;
+}
+
+.habilidade h3 {
+  color: #22c55e;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.habilidade li {
+  list-style-type: none;
+  margin-left: 6px;
+}
+
+.habilidade p,
+.habilidade a {
+  color: #38bdf8;
+  gap: 4px;
+  font-weight: 500;
+}
+
+.imgs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.imgs img {
+  padding: 0;
+  width: 16vh;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: transform 0.3, border 0.3s, box-shadow 0.3s;
+  flex-grow: 1;
+  flex-basis: 100;
+}
+
+.imgs img:hover {
+  transform: scale(1.2);
+  box-shadow: 0 5px 20px rgba(0, 250, 190, 0.3);
+}
+
+.imgs img:active {
+  transform: translate(2px, 2px);
+  border:2px solid #22c55e;
+}
+
+footer {
+  margin: 2rem;
+  font-family: 'Poppins', Arial;
+  font-size: 32px;
+  color: #888888;
+  text-align: center;
+}
+
+/* =========================
+   DESKTOP
+========================= */
+@media (min-width: 768px) {
+
+  header h1 {
+    font-size: 24px;
+  }
+
+  nav ul {
+    flex-direction: row;
+    width: 100%;
+    gap: 25px;
+    justify-content: space-around;
+    margin: 2rem 2rem;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 2rem auto;
+  }
+
+  p {
+    font-size: 16px;
+  }
+  
+  .imgs {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .imgs img {
+   padding: 0;
+   width: 14vh;
+   flex-shrink: 1;
+}
+
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes showDown {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes showup {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  }
+@keyframes subir {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-34px); }
+  40%  { transform: translateY(-62px); }
+  60% { transform: translateY(-94px); }
+  80% { transform: translateY(-126px); }
+  100% { transform: translateY(0); }
+     }
