@@ -1,7 +1,7 @@
 
 //js
 
-const links = document.querySelectorAll("nav a");
+const links = document.querySelectorAll("a[data-section]");
     const sections = document.querySelectorAll(".section");
 
     links.forEach(link => {

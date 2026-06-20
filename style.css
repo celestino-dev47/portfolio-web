@@ -17,7 +17,12 @@ html {
 
 @font-face {
 	font-family: "Poppins";
-	src: url("./Poppins-Regular.ttf");
+	src: url("./fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("./fonts/Inter_18pt-Regular.ttf");
 }
 
 /*======================
@@ -52,19 +57,18 @@ body {
 }
 
 header {
+  font-family: Inter;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin: 2rem 1rem;
   margin-bottom: 0.5rem;
-}
-
-header p {
-  color: var(--text);
+  animation: showUp 1.2s ease forwards;
 }
 
 .container {
+  margin-bottom: 2rem;
   text-align: center;
   font-size: 16px;
   gap: 6px;
@@ -90,19 +94,25 @@ nav ul {
   justify-content: center;
   align-items: center;
   margin: 0rem;
-  padding: 10px 12px;
+  padding: 10px;
   backdrop-filter: blur(4px);
   background-color: var(--opac-surface);
   border: 1px solid var(--border);
   border-radius: 10px;
   box-shadow: 0 0 20px var(--glow);
-  gap: 10px;
-  
+  gap: 8px;
+  animation: showDown 1.2s ease forwards,
+  glowUp2 2s ease infinite;
 }
 
 nav ul a {
   text-decoration: none;
   color: var(--accent);
+}
+
+.active {
+  border-bottom: 2px solid var(--text);
+  color: var(--text);
 }
 
 /* Controle das secções */
@@ -115,6 +125,7 @@ nav ul a {
 	opacity: 0;
 	gap: 10px;
 	margin: 1rem;
+	margin-top: 2rem;
 	padding: 28px 24px;
 	border: 2px solid var(--border);
 	border-radius: 10px;
@@ -122,37 +133,101 @@ nav ul a {
 	color: var(--text);
 	animation: 
 	glowUp 2s ease infinite,
-	showRight 1.2s ease-out forwards;
+	showRight 1.6s ease-out forwards;
 }
 
 .active-section h2 {
   color: var(--primary);
   text-align: center;
+  font-size: 1.8em;
 }
 
 .active-section h3 {
   color: var(--secondary);
 }
 
-#inicio {
+.center {
   text-align: center;
-  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin: 1rem 0rem;
 }
 
-.habilidade {
+.center h3 {
+  color: var(--secondary);
+  margin: 0.4rem;
+}
+
+.center p {
   text-align: justify;
 }
 
-.habilidade ul li {
-  list-style: none;
-  color: var(--muted);
-  padding: 2px 10px;
+.btn {
+  border: 2px solid var(--border);
+  box-shadow: 0 0 20px var(--glow);
+  border-radius: 10px;
+  padding: 6px 12px;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 1rem 2rem;
+  color: var(--text);
+  background-color: var(--accent);
+  animation: road 2s ease infinite;
 }
 
-.habilidade ul li a {
+.list, .list a {
   text-decoration: none;
-  color: var(--accent);
+  list-style: none;
+  padding: 8px 10px;
+  color: var(--muted);
+  font-weight: 500;
 }
+
+.project {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project h4, .project a{
+  color: var(--accent);
+  text-decoration: none;
+  text-align: center;
+}
+
+.project p {
+  color: var(--text);
+  text-align: center;
+}
+
+.footer {
+	margin-top: 50px;
+	padding: 20px;
+	text-align: center;
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	color: var(--muted);
+	font-size: 14px;
+	font-family: Inter;
+}
+
+.footer-links {
+	margin: 10px 0;
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	flex-wrap: wrap;
+	opacity: 0.8;
+	animation: ShowDown 1.2s ease forwards;
+}
+
+.autor {
+	opacity: 0.6;
+	font-size: 12px;
+}
+
 
 /* =========================
    DESKTOP
@@ -172,8 +247,8 @@ nav ul a {
 		flex-direction: row;
 		min-width: 900px;
 		gap: 25px;
-		justify-content: space-around;
-		margin: 2rem 2rem;
+		justify-content: space-between;
+		margin: 2rem 1rem;
 	}
 
 	
@@ -189,20 +264,7 @@ nav ul a {
 	}
 
 	p {
-		font-size: 16px;
-	}
-
-	.imgs {
-		display: flex;
-		flex-direction: row;
-		margin: 2rem;
-		flex-wrap: wrap;
-	}
-
-	.imgs img {
-		padding: 0;
-		width: 14vh;
-		flex-shrink: 1;
+		font-size: 18px;
 	}
 }
 
@@ -221,10 +283,10 @@ nav ul a {
 	}
 }
 
-@keyframes showRight {
+@keyframes showUp {
 	from {
 		opacity: 0;
-		transform: translateX(-200px);
+		transform: translateY(40px);
 	}
 	to {
 		opacity: 1;
@@ -232,30 +294,19 @@ nav ul a {
 	}
 }
 
-@keyframes subir {
-  0%, 15% {
-    transform: translateY(0);
-  }
-
-  20%, 35% {
-    transform: translateY(-32px);
-  }
-
-  40%, 55% {
-    transform: translateY(-64px);
-  }
-
-  60%, 75% {
-    transform: translateY(-96px);
-  }
-
-  80%, 95% {
-    transform: translateY(-128px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
+@keyframes showRight {
+	0% {
+		opacity: 0;
+		transform: translateX(-200px);
+	}
+	50% {
+	  opacity: 0.7;
+	  transform: translateX(40px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes glowUp {
@@ -269,5 +320,46 @@ nav ul a {
   
   100% {
     box-shadow: 0 0 20px var(--primary-glow);
+  }
+}
+
+@keyframes glowUp2 {
+  0% {
+    box-shadow: 0 0 20px var(--glow);
+  }
+  
+  50% {
+    box-shadow: 0 0 10px var(--primary-glow);
+  }
+  
+  100% {
+    box-shadow: 0 0 20px var(--glow);
+  }
+}
+
+@keyframes road {
+  0% {
+    border-color: var(--border);
+    border-top: 2px solid white;
+  }
+  
+  25% {
+    border-color: var(--border);
+    border-right: 2px solid white;
+  }
+  
+  50% {
+    border-color: var(--border);
+    border-bottom: 2px solid white;
+  }
+  
+  75% {
+    border-color: var(--border);
+    border-left: 2px solid white;
+  }
+  
+  100% {
+    border-color: var(--border);
+    border-top: 2px solid white;
   }
 }
